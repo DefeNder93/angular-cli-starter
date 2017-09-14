@@ -1,0 +1,28 @@
+version: "2.1"
+
+services:
+    angular-cli-dev:
+        build:
+          context: ./
+          dockerfile: ./containers/web-client-dev/Dockerfile
+        ports:
+            - 4200:4200
+        volumes:
+            - ./src:/app/src
+        networks:
+            - server
+    angular-cli:
+        build:
+          context: ./
+          dockerfile: ./containers/web-client/Dockerfile
+        ports:
+            - 4201:4200
+        volumes:
+            - ./src:/app/src
+        networks:
+            - server
+volumes:
+    data:
+
+networks:
+    server:
